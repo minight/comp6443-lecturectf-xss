@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block content %}
+<h3>Original Javascript</h3>
+<figure class="highlight">
+<pre><code>
+// don't hurt me. Jquery is easier to write
+var copypasta = () => {
+  let output = $("#reflect").text();
+  console.log(output);
+  $('#inject').html(output);
+};
+</code></pre>
+</figure>
+
+<h3>Better Code</h3>
+<figure class="highlight">
+<pre><code>
+// don't hurt me. Jquery is easier to write
+var copypasta = () => {
+  let output = $("#reflect").html();
+  console.log(output);
+  $('#inject').html(output);
+};
+</code></pre>
+</figure>
+<p>jQuery y u do dis</p>
+<p><a href="https://stackoverflow.com/questions/4459992/differences-between-text-and-html-with-escaped-and-characters">Stack Overflow Sauce</a></p>
+<p>This is in accordance with the corresponding JavaScript methods textContent and innerHTML.</p>
+
+<figure class="highlight">
+<pre><code>
+>> console.log(document.getElementsByTagName('p')[0].textContent);
+hello &lt;world&gt;
+
+>> console.log(document.getElementsByTagName('p')[0].innerHTML);
+hello &amp;lt;world&amp;gt;
+<!-- if you're viewing source. This is double escaped to show the example better in live HTML --!>
+</code></pre>
+</figure>
+
+
+{% endblock content %}
+

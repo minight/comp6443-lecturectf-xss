@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+Please submit some message. An Admin will take a look at your message. Try and steal his cookie
+
+{% if success %}
+    <p>big ty. Will take a look&lt;p&gt;</p>
+{% endif %}
+<form class="form" action="{{url_for('normal_xss.xss_create_page')}}" method=POST>
+    <p>{{message}}</p>
+    <div class="form-group">
+      <label>Title:</label>
+      <input type="text" class="form-control" placeholder="What is BCC South Korea Correspondent" name="title">
+      <!-- https://youtu.be/0M7679g1BEw?t=72 -->
+    </div>
+    <div class="form-group">
+      <label>Content:</label>
+      <input type="text" class="form-control" placeholder="???" name="content">
+    </div>
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">submit</button>
+  </form>
+{% endblock %}
+

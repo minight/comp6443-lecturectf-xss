@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+<script src="{{url_for('static', filename='angular-1.5.8.js') }}"></script>
+<div ng-app>
+{% autoescape false %}
+<p><b>title</b>:{{ title }}</p>
+<p><b>content</b>:{{ content }}</p>
+{% endautoescape %}
+</div>
+<a href="{{url_for('base_xss.xss_create_page')}}">try again</a>
+{% endblock %}

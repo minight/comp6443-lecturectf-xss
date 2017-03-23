@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block content %}
+{% autoescape false %}
+{% for k,v in request.headers.items() %}
+  <p><b>{{ k }}:</b> {{ v }}</p>
+{% endfor %}
+{% endautoescape %}
+{% endblock content %}
+

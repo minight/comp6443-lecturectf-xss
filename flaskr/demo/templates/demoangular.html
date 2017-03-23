@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+{% raw %}
+<div ng-app="myApp" ng-controller="myCtrl">
+  <p>fill me in: <input ng-model="firstname"></p>
+  <h1>{{firstname}}</h1>
+
+  <p>More demo of angular stuff: {{ 5 * 5 }}</p>
+  <p>Unfortunately some things don't work {{ document.location }}</p>
+  <p>Like this: {{ alert(1) }}</p>
+</div>
+{% endraw %}
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+<script>
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope) {
+    $scope.firstname = ":norman:";
+});
+</script>
+{% endblock content %}
+

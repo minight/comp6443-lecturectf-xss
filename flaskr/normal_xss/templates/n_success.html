@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% block content %}
+{% autoescape false %}
+<p><b>title</b>:{{ title }}</p>
+<p><b>content</b>:{{ content }}</p>
+{% endautoescape %}
+<a href="{{url_for('normal_xss.xss_create_page')}}">try again</a>
+{% endblock %}

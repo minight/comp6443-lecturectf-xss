@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+<form class="form-inline" action='{{url_for('demo.badreflect')}}' method='GET'>
+  <input id='param' class="form-control mr-sm-2" type="text" name="p" placeholder="parameter">
+  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+</form>
+
+<p><div id="reflect">{{ param }}</div></p>
+<button class="btn btn-outline-success my-2 my-sm-0" onclick="copypasta()">Copy pasta</button>
+<p><div id="inject"></div></p>
+<a href="{{url_for('demo.fixjq')}}" class="btn btn-outline-info my-2 my-sm-0" onclick="copypasta()">How 2 fix it</a>
+{% endblock content %}
+
+
+{% block javascript %}
+<script>
+// don't hurt me. Jquery is easier to write
+var copypasta = () => {
+  let output = $("#reflect").text();
+  console.log(output);
+  $('#inject').html(output);
+};
+</script>
+{% endblock javascript %}
+

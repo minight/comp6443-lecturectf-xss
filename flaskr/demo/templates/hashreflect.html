@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+<form class="form-inline" action='{{url_for('demo.reflect')}}' method='GET'>
+  <input id='param' class="form-control mr-sm-2" type="text" name="p" placeholder="parameter">
+  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+</form>
+
+<p><span id="inject"></span></p>
+{% endblock content %}
+
+
+{% block javascript %}
+<script>
+// don't hurt me. Jquery is easier to write
+$(document).ready(() => {
+  console.log("Hello. This is the DOM Based XSS challenge. ");
+  let update = () => $('#inject').html(document.location.hash);
+  update();
+  $('form').submit((e) => {
+    e.preventDefault();
+    document.location.hash = $('input[name=p]').val();
+    update();
+  })
+})
+</script>
+{% endblock %}
